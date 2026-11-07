@@ -1,0 +1,134 @@
+.panel-tabs {
+  position: absolute;
+  top: 100px;
+  inset-inline-end: 18px;
+  padding: 4px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  display: flex;
+  box-shadow: var(--shadow);
+  z-index: 4;
+}
+.board-panel,
+.inspector {
+  position: absolute;
+  inset-inline-end: 18px;
+  top: 158px;
+  width: 292px;
+  max-height: calc(100dvh - 245px);
+  overflow: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+  z-index: 4;
+}
+.panel-heading,
+.inspector-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.panel-heading h2 {
+  font-size: 15px;
+  margin: 0;
+}
+.inspector-heading > div {
+  display: flex;
+}
+.inspector .icon-button {
+  width: 34px;
+  height: 34px;
+}
+.inspector {
+  top: 158px;
+}
+.dimension-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.dimension-grid input {
+  min-width: 0;
+}
+.layer-controls {
+  display: flex;
+  gap: 6px;
+  border-top: 1px solid var(--line);
+  margin-top: 14px;
+  padding-top: 10px;
+}
+.layer-controls button {
+  font-size: 11px;
+}
+.board-panel form {
+  margin-bottom: 20px;
+}
+.board-panel .full-width {
+  margin-top: 8px;
+}
+.object-list {
+  list-style: none;
+  padding: 0;
+}
+.object-list button {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  text-align: start;
+  padding: 10px 4px;
+  border-bottom: 1px solid var(--line);
+}
+.object-list button > span:last-child {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.object-swatch {
+  flex: 0 0 18px;
+  height: 18px;
+  border-radius: 4px;
+}
+.comment {
+  border-top: 1px solid var(--line);
+  padding-block: 16px;
+}
+.comment > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+}
+.comment p {
+  font-size: 13px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+.comment.resolved {
+  opacity: 0.65;
+}
+.history-entry {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+  padding-block: 13px;
+}
+.history-entry > div {
+  min-width: 0;
+}
+.history-entry strong {
+  display: block;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+}
+.history-entry span {
+  display: block;
+  margin-top: 5px;
+}

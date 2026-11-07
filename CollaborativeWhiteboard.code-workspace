@@ -1,0 +1,42 @@
+{
+  "folders": [
+    { "name": "CollaborativeWhiteboard", "path": "." }
+  ],
+  "settings": {
+    "window.title": "Collaborative Whiteboard — ${activeEditorShort}${separator}${appName}",
+    "files.exclude": { "**/node_modules": true, "**/dist": true },
+    "search.exclude": { "**/node_modules": true, "**/dist": true }
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Frontend: dev (5603)",
+        "type": "shell",
+        "command": "npm",
+        "args": ["run", "dev"],
+        "options": { "cwd": "${workspaceFolder}/frontend" },
+        "isBackground": true,
+        "problemMatcher": [],
+        "presentation": { "panel": "dedicated", "group": "whiteboard" }
+      },
+      {
+        "label": "Backend: dev (5604)",
+        "type": "shell",
+        "command": "npm",
+        "args": ["run", "start:dev"],
+        "options": { "cwd": "${workspaceFolder}/backend", "env": { "PORT": "5604" } },
+        "isBackground": true,
+        "problemMatcher": [],
+        "presentation": { "panel": "dedicated", "group": "whiteboard" }
+      },
+      {
+        "label": "Start frontend + backend",
+        "dependsOn": ["Frontend: dev (5603)", "Backend: dev (5604)"],
+        "dependsOrder": "parallel",
+        "problemMatcher": [],
+        "group": { "kind": "build", "isDefault": true }
+      }
+    ]
+  }
+}

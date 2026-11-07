@@ -1,0 +1,35 @@
+name: Collaborative Whiteboard CI
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6, verified 2026-11-07
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6, verified 2026-11-07
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            frontend/package-lock.json
+            backend/package-lock.json
+      - run: npm ci --prefix frontend
+      - run: npm ci --prefix backend
+      - run: node tools/check-source.mjs
+      - run: npm run lint --prefix frontend
+      - run: npm run lint --prefix backend
+      - run: npm run format:check --prefix frontend
+      - run: npm run format:check --prefix backend
+      - run: npm run typecheck --prefix frontend
+      - run: npm run typecheck --prefix backend
+      - run: npm run test:coverage --prefix frontend
+      - run: npm run test:coverage --prefix backend
+      - run: npm run build --prefix frontend
+      - run: npm run build --prefix backend
+      - run: node tools/check-web.mjs
+      - run: npm run benchmark --prefix frontend
+      - run: npm audit --prefix frontend --audit-level=moderate
+      - run: npm audit --prefix backend --audit-level=moderate
+      - run: node frontend/node_modules/jscpd/bin/jscpd --format typescript,tsx,css --threshold 3 --ignore '**/tests/**' frontend/src backend/src

@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+!.env.sample
+*.log
+coverage/
+*.tsbuildinfo
+.cache/
+.DS_Store
+Thumbs.db
+data/
+*.sqlite*
+test-results/

@@ -1,0 +1,40 @@
+{
+  "name": "collaborative-whiteboard-backend",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "start:dev": "tsc && node --watch dist/main.js",
+    "typecheck": "tsc --noEmit --project tsconfig.test.json",
+    "lint": "node ../frontend/node_modules/eslint/bin/eslint.js --config ../frontend/eslint.config.mjs src tests",
+    "format:check": "node ../frontend/node_modules/prettier/bin/prettier.cjs --check src tests",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@nestjs/common": "12.4.0",
+    "@nestjs/core": "12.4.0",
+    "@nestjs/platform-express": "12.4.0",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "pngjs": "^7.0.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "ws": "^8.18.0",
+    "yjs": "13.6.33",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.19.0",
+    "@types/pngjs": "^6.0.5",
+    "@types/ws": "^8.5.10",
+    "@vitest/coverage-v8": "5.1.0",
+    "typescript": "^5.9.0",
+    "vitest": "5.1.0"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "private": true
+}
