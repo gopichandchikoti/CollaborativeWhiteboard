@@ -16,7 +16,7 @@
     "benchmark": "vitest run --config vitest.benchmark.config.ts"
   },
   "dependencies": {
-    "lucide-react": "^0.378.0",
+    "lucide-react": "^1.68.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "yjs": "13.6.33",
