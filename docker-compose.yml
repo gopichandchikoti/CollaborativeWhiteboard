@@ -1,14 +1,14 @@
-version: '3.8'
+# Optional legacy reference. The application uses SQLite and does not need this service.
 services:
   postgres:
+    profiles: [legacy-postgres]
     image: postgres:16-alpine
-    container_name: whiteboard-db
     environment:
-      POSTGRES_USER: whiteboard_user
-      POSTGRES_PASSWORD: whiteboard_password
-      POSTGRES_DB: whiteboard
+      POSTGRES_USER: ${POSTGRES_USER:-whiteboard_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD explicitly for the legacy database}
+      POSTGRES_DB: ${POSTGRES_DB:-whiteboard}
     ports:
-      - "5432:5432"
+      - "127.0.0.1:${POSTGRES_PORT:-55432}:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
 

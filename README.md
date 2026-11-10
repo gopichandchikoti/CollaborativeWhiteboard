@@ -2,7 +2,7 @@
 
 A private infinite canvas with real multi-user editing and durable server storage. Built with React,
 TypeScript, Vite, NestJS, Yjs and SQLite. Desktop web first, with responsive controls for smaller screens.
-Version **1.0.0**. Windows / Node 22.13.1 verified locally; other operating systems are not verified.
+Version **1.0.0**. Windows / Node 22.23.4 verified locally; other operating systems are not verified.
 
 Security review: the installed Node 22.13.1 is behind current security patches. Use a maintained patched
 runtime before public use; the latest Node 22.x release checked on 2026-11-07 is
@@ -41,7 +41,7 @@ API and automated component verification; no screenshot or full WCAG conformance
 
 ## Setup and start
 
-Run from this project's root with Node.js **22.13 or newer** and npm. Dependency installation needs registry access.
+Run from this project's root with Node.js **22.23.4 or a newer maintained security patch** and npm. Dependency installation needs registry access.
 Node 22 prints an experimental SQLite warning; it is expected for its built-in SQLite API.
 
 ```powershell

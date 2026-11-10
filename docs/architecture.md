@@ -518,3 +518,29 @@ existing wording when approved; do not blindly append this section or copy appli
 
 These clauses have not been installed in the owner's AGENTS.md or any global settings. Exact wording and
 consolidation can be reviewed here before the owner approves changing that file.
+
+
+## 16. Five-repository standards audit - 2026-11-08
+
+Baseline: revision 4c35e68. The existing hardened React/NestJS/Yjs/SQLite architecture and extensive negative tests were inspected rather than replaced. Current checks use Windows and the official checksum-verified portable Node 22.23.4; global Node settings and live databases/services are unchanged.
+
+| Standard sections / capability | Acceptance / owner | Status | Evidence / residual risk |
+| --- | --- | --- | --- |
+| 1-3, 21-22: authority/evidence | Shared root rules and recorded current results | Verified for this audit | Root AGENTS.md synchronized; project-local 64 KiB instruction budget; fresh trusted Codex sessions must load it |
+| 4-7: architecture/code/contracts | Preserve layers and validate boundaries | Verified configured gates | Existing HTTP/WebSocket/resource contracts retained; lint/types/source/build checks and previous ownership maintained |
+| 8-9: persistence and web security | Private SQLite, object authorization, bounded sessions/KDF/sockets | Existing controls verified | Actual API/SQLite and socket tests; duplicate-cookie, CSRF, host/origin, stale-session, viewer/cross-user denial and limits retained |
+| 10-12: content, canvas and accessibility | One content model; usable editing/recovery | Verified automated / partial manual | Frontend coverage includes canvas/geometry/recovery/localization; prior device/manual accessibility limits remain |
+| 13-14, 18, 20 | Match browser/server scope | N/A / unrun hosting | No native installer, AI or reconstruction; no deployment/publication requested |
+| 15-16: bounds, operations and gates | Preserve every configured threshold | Verified configured / operations partial | Current backend/frontend coverage below; no full public load test, physical-device or field metrics claimed |
+| 17: supply chain/runtime | Patched runtime and credential-free checkout | Hardened / hosted unrun | Node .nvmrc and CI pin 22.23.4; package/lock minimum updated; checkout credentials disabled; package audits report no vulnerabilities |
+| 19: documentation/config | Safe examples and truthful deployment boundary | Hardened | Legacy Compose database made explicitly optional and private; its stale default credential removed; no database container started |
+
+Fixed findings: docker-compose.yml was an unused legacy PostgreSQL reference with a hard-coded password and a port published on every interface. It now requires the legacy-postgres profile, an explicitly supplied POSTGRES_PASSWORD and loopback-only port 55432 (overridable with POSTGRES_PORT). It is not used by the application's SQLite storage. Source configuration changes do not rotate any database credential that somebody may have used previously; any such deployment needs owner-controlled rotation separately. The generic sample password is removed and no real credential was discovered or changed.
+
+The installed global Node 22.13.1 is older than the current Node 22 security patch. A task-local official 22.23.4 executable was downloaded, SHA-256 matched against the official HTTPS release checksum (dccc52de28d8df2ee22d2062424f8c563070d95d8ad70c54c4bf01d590dec14f), and used for both coverage suites and current checks. Minimum engines, lock metadata and CI were aligned. This does not claim all future runtime releases are safe; maintain the runtime patch inventory. The prior global executable and unrelated services remain untouched.
+
+Current backend coverage: 96.50% statements, 92.03% branches, 96.68% functions, 96.76% lines. Frontend: 96.36% statements, 91.32% branches, 94.16% functions, 97.89% lines. Existing 90% global and selected 95% critical-module gates passed. HTTP bind-failure/SQLite experimental warnings in negative tests are expected evidence, not a service readiness signal. Package audits report zero vulnerabilities in both packages. Public enrollment/recovery, distributed quotas, verified HTTPS deployment/restore/monitoring, full changed-code coverage and general SAST/DAST remain unverified as documented in the prior detailed audit.
+
+The egress and resource/action matrices above remain authoritative. No new data collection, guest access, outbound request capability or permissions were introduced. [Node security release](https://nodejs.org/en/blog/release/v22.23.4) and [GitHub workflow hardening](https://docs.github.com/en/actions/reference/security/secure-use) were rechecked on 2026-11-08.
+
+Final audit tooling: Git whitespace, workflow YAML and project TOML checks passed. Four secret-pattern rules passed synthetic positive/negative controls, then reported no matches in the non-ignored UTF-8 working tree and 1 reachable Git commits (unborn repositories have no history). Findings are reported as paths/rule IDs only. This is not entropy/encoded-secret or binary scanning; ignored private machine data is outside scope. Hosted workflows, general SAST and security certification remain unclaimed. The instruction files are byte-identical to the supplied shared source, and fit the 65,536-byte repository-only budget; global Codex configuration was not changed. See [OpenAI configuration reference](https://learn.chatgpt.com/docs/config-file/config-reference).

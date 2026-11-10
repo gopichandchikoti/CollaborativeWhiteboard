@@ -1,0 +1,2 @@
+# Load the complete shared standard; leave user/global settings unchanged.
+project_doc_max_bytes = 65536
